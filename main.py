@@ -1,4 +1,3 @@
-import time
 from selenium.webdriver.chrome.service import Service
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
@@ -43,7 +42,6 @@ for i in range(len(href_list)):
     # html = driver.page_source # page의 html 소스를 받아오기
     # soup = BeautifulSoup(html, 'html.parser') # html 소스를 컴퓨터 언어로 전환
     # names = soup.select('div.PlaceListTitle_container__qe7XH > strong')
-    # ※ 오류 났던 부분 ! -> 동적인 페이지를 bs4로 했기 때문에 아무것도 읽히지 않았다. selenium으로 크롤링해야함.
     names = driver2.find_elements(By.CLASS_NAME, 'PlaceListTitle_text__2511B.normal')
     # names = 리스트 형태로 저장.
     rates = driver2.find_elements(By.CLASS_NAME, 'PlaceListScore_rating__3Glxf')
@@ -51,7 +49,6 @@ for i in range(len(href_list)):
         areaname = driver2.find_element(By.CLASS_NAME, 'PlaceListTitle_small__aZtDV').text
     else:
         areaname = driver2.find_element(By.CLASS_NAME, 'PlaceListTitle_normal__318s-').text
-    # select_one은 get_text()가 되는데 select는 안되는 이유? : select는 리스트 형태로 저장되기 때문이다.
     print(areaname)
     print('---------------------')
     num = 0
